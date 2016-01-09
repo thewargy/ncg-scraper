@@ -24,7 +24,8 @@ class NcgSpider(scrapy.Spider):
         if "You have Netcode Premium!" in response.body:
             print "LOGIN SUCCESS!"
             request_list = []
-            for page in range(26,76):
+            # 75 pages of videos currently
+            for page in range(1,76):
                 url="http://www.netcodeguides.com/videos?p={page}".format(page=page)
                 request_list.append(scrapy.Request(url=url, callback=self.parse_videos))
             return request_list
